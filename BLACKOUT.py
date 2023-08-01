@@ -30,14 +30,15 @@ def quit():
     sys.exit(0)
 
 # Exibe o menu de comandos.
-print(f"{RED}**Menu de comandos**{BLACK}")
-print(f"{RED}* help: Exibe este menu de ajuda.{BLACK}")
-print(f"{RED}* version: Exibe a versão do script.{BLACK}")
-print(f"{RED}* quit: Sai do script.{BLACK}")
-print(f"{RED}* check_open_ports: Verifica as portas abertas de um site.{BLACK}")
-print(f"{RED}* get_ip: Consulta o IP de um site.{BLACK}")
-print(f"{RED}* check_sql_vulnerabilities: Verifica se um site é vulnerável a SQLi.{BLACK}")
-print(f"{RED}* get_protocol: Consulta se um site usa UDP ou TCP.{BLACK}")
+def show_commands():
+    print(f"{RED}**Menu de comandos**{BLACK}")
+    print(f"{RED}* help: Exibe este menu de ajuda.{BLACK}")
+    print(f"{RED}* version: Exibe a versão do script.{BLACK}")
+    print(f"{RED}* quit: Sai do script.{BLACK}")
+    print(f"{RED}* check_open_ports: Verifica as portas abertas de um site.{BLACK}")
+    print(f"{RED}* get_ip: Consulta o IP de um site.{BLACK}")
+    print(f"{RED}* check_sql_vulnerabilities: Verifica se um site é vulnerável a SQLi.{BLACK}")
+    print(f"{RED}* get_protocol: Consulta se um site usa UDP ou TCP.{BLACK}")
 
 # Obtém o nome do site.
 site_name = input(f"{RED}Digite o nome do site: {BLACK}")
@@ -75,3 +76,13 @@ for vulnerability in sql_vulnerabilities:
         print(f"{RED}O site está vulnerável a SQLi.{BLACK}")
     except requests.exceptions.ConnectionError:
         pass
+
+# Limpa a tela.
+if commands_executed == 2:
+    clear()
+
+commands_executed = commands_executed + 1
+
+# Escolha a funcionalidade que você deseja usar.
+while True:
+    print(f"{RED}Escolha a funcionalidade que você deseja
