@@ -75,9 +75,3 @@ for vulnerability in sql_vulnerabilities:
         print(f"{RED}O site está vulnerável a SQLi.{BLACK}")
     except requests.exceptions.ConnectionError:
         pass
-
-# Escolha o comando.
-command = input(f"{RED}Qual comando você deseja executar? {BLACK}")
-
-# Executa o comando.
-if command == "help
