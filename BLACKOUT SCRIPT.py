@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import sys
+import socket
+import requests
 
 # Define a cor vermelha.
 RED = '\033[91m'
@@ -15,6 +16,10 @@ def help():
     print(f"{RED}* help: Exibe este menu de ajuda.{BLACK}")
     print(f"{RED}* version: Exibe a versão do script.{BLACK}")
     print(f"{RED}* quit: Sai do script.{BLACK}")
+    print(f"{RED}* check_open_ports: Verifica as portas abertas de um site.{BLACK}")
+    print(f"{RED}* get_ip: Consulta o IP de um site.{BLACK}")
+    print(f"{RED}* check_sql_vulnerabilities: Verifica se um site é vulnerável a SQLi.{BLACK}")
+    print(f"{RED}* get_protocol: Consulta se um site usa UDP ou TCP.{BLACK}")
 
 # Exibe a versão do script.
 def version():
@@ -24,21 +29,15 @@ def version():
 def quit():
     sys.exit(0)
 
-# Escolha o comando.
-command = input(f"{RED}Qual comando você deseja executar? {BLACK}")
-
-# Executa o comando.
-if command == "help":
-    help()
-elif command == "version":
-    version()
-elif command == "quit":
-    quit()
-else:
-    print(f"{RED}Comando inválido.{BLACK}")
-
-# Exibe o texto principal do script em vermelho.
-print(f"{RED}Este script verifica portas abertas de um site, consulta o IP do site e consulta se ele é UDP ou TCP, e também verifica painéis de administração e vulnerabilidades SQL.{BLACK}")
+# Exibe o menu de comandos.
+print(f"{RED}**Menu de comandos**{BLACK}")
+print(f"{RED}* help: Exibe este menu de ajuda.{BLACK}")
+print(f"{RED}* version: Exibe a versão do script.{BLACK}")
+print(f"{RED}* quit: Sai do script.{BLACK}")
+print(f"{RED}* check_open_ports: Verifica as portas abertas de um site.{BLACK}")
+print(f"{RED}* get_ip: Consulta o IP de um site.{BLACK}")
+print(f"{RED}* check_sql_vulnerabilities: Verifica se um site é vulnerável a SQLi.{BLACK}")
+print(f"{RED}* get_protocol: Consulta se um site usa UDP ou TCP.{BLACK}")
 
 # Obtém o nome do site.
 site_name = input(f"{RED}Digite o nome do site: {BLACK}")
@@ -60,7 +59,7 @@ if socket.getservbyport(80, "tcp") == site_ip:
 else:
     print(f"{RED}O site usa UDP.{BLACK}")
 
-# Verifica se existe um painel de administração.
+# Verifica se há um painel de administração.
 admin_url = f"http://{site_ip}/admin"
 try:
     requests.get(admin_url)
@@ -77,23 +76,8 @@ for vulnerability in sql_vulnerabilities:
     except requests.exceptions.ConnectionError:
         pass
 
-# Exibe o submenu "Créditos".
-def credits():
-    print(f"{RED}Créditos: {BLACK}")
-    print(f"* Zed Hacking")
-    print(f"* https://t.me/BlackoutTeamOfc")
-
 # Escolha o comando.
 command = input(f"{RED}Qual comando você deseja executar? {BLACK}")
 
 # Executa o comando.
-if command == "help":
-    help()
-elif command == "version":
-    version()
-elif command == "quit":
-    quit()
-elif command == "credits":
-    credits()
-else:
-    print(f"{RED}Comando inválido.{BLACK}")
+if command == "help
