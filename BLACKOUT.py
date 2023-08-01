@@ -82,8 +82,4 @@ if commands_executed == 2:
     clear()
 
 commands_executed = commands_executed + 1
-
-# Escolha a funcionalidade que você deseja usar.
-while True:
-    print(f"{RED}Escolha a funcionalidade que você deseja usar: {
         
